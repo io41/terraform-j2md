@@ -9,14 +9,20 @@ import (
 )
 
 var (
-	escapeHTML = true
-	showDrift  = true
+	Version, Revision string
+	escapeHTML        = true
+	showDrift         = true
 )
 
 func main() {
 	noEscapeHTML := flag.Bool("no-escape-html", false, "prevent <, >, and & from being escaped in JSON strings")
 	noDrift := flag.Bool("no-drift", false, "omit the drift detection section from the output")
+	showVersion := flag.Bool("version", false, "print version")
 	flag.Parse()
+	if *showVersion {
+		fmt.Printf("%s (%s)\n", Version, Revision)
+		return
+	}
 	if *noEscapeHTML {
 		escapeHTML = false
 	}
