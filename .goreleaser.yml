@@ -1,3 +1,4 @@
+version: 2
 project_name: terraform-j2md
 env:
   - GO111MODULE=on
@@ -25,13 +26,13 @@ archives:
         - README.md
     format_overrides:
       - goos: Windows
-        format: zip
+        formats: [zip]
 release:
-  prerelease: auto
+  prerelease: false
 checksum:
   name_template: 'checksums.txt'
 snapshot:
-  name_template: "{{ .Tag }}-next"
+  version_template: "{{ .Version }}-next"
 changelog:
   sort: asc
   filters:
