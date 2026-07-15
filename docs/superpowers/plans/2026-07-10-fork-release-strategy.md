@@ -156,8 +156,8 @@ Expected: clean merge; the history shows separate drift and documentation merges
 Run:
 
 ```bash
-yq -e '.on.push.branches == ["release", "master"] and .on.pull_request.branches == ["release", "master"]' .github/workflows/go.yml
-yq -e '.on.push.tags == ["v[0-9]+.[0-9]+.[0-9]+-io41.[0-9]+"]' .github/workflows/goreleaser.yml
+yq -e '(.on.push.branches | length == 2) and .on.push.branches[0] == "release" and .on.push.branches[1] == "master" and (.on.pull_request.branches | length == 2) and .on.pull_request.branches[0] == "release" and .on.pull_request.branches[1] == "master"' .github/workflows/go.yml
+yq -e '(.on.push.tags | length == 1) and .on.push.tags[0] == "v[0-9]+.[0-9]+.[0-9]+-io41.[0-9]+"' .github/workflows/goreleaser.yml
 goreleaser check
 ```
 
@@ -228,9 +228,9 @@ Do not migrate unrelated workflow actions or change artifact names.
 Run:
 
 ```bash
-yq -e '.on.push.branches == ["release", "master"] and .on.pull_request.branches == ["release", "master"]' .github/workflows/go.yml
-yq -e '.on.push.tags == ["v[0-9]+.[0-9]+.[0-9]+-io41.[0-9]+"]' .github/workflows/goreleaser.yml
-yq -e '.version == 2 and .release.prerelease == false and .snapshot.version_template == "{{ .Version }}-next" and .archives[0].format_overrides[0].formats == ["zip"]' .goreleaser.yml
+yq -e '(.on.push.branches | length == 2) and .on.push.branches[0] == "release" and .on.push.branches[1] == "master" and (.on.pull_request.branches | length == 2) and .on.pull_request.branches[0] == "release" and .on.pull_request.branches[1] == "master"' .github/workflows/go.yml
+yq -e '(.on.push.tags | length == 1) and .on.push.tags[0] == "v[0-9]+.[0-9]+.[0-9]+-io41.[0-9]+"' .github/workflows/goreleaser.yml
+yq -e '.version == 2 and .release.prerelease == false and .snapshot.version_template == "{{ .Version }}-next" and (.archives[0].format_overrides[0].formats | length == 1) and .archives[0].format_overrides[0].formats[0] == "zip"' .goreleaser.yml
 goreleaser check
 git diff --check
 ```
