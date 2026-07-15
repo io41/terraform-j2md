@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/hashicorp/terraform-json/sanitize"
-	"github.com/reproio/terraform-j2md/internal/format"
+	"github.com/io41/terraform-j2md/internal/format"
 	"io"
 	"text/template"
 

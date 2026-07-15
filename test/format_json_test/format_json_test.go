@@ -2,7 +2,7 @@ package format_json_test
 
 import (
 	tfjson "github.com/hashicorp/terraform-json"
-	"github.com/reproio/terraform-j2md/internal/format"
+	"github.com/io41/terraform-j2md/internal/format"
 	"reflect"
 	"testing"
 )

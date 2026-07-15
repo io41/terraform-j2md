@@ -14,7 +14,7 @@ Output texts may be useful as pull-request comments, and so on.
 ## Install
 
 ```
-% go install github.com/reproio/terraform-j2md/cmd/terraform-j2md@latest
+% go install github.com/io41/terraform-j2md/cmd/terraform-j2md@latest
 ```
 
 ### GitHub Actions

@@ -3,7 +3,7 @@ package plan_test
 import (
 	"bytes"
 	"fmt"
-	"github.com/reproio/terraform-j2md/internal/terraform"
+	"github.com/io41/terraform-j2md/internal/terraform"
 	"os"
 	"strings"
 	"testing"
