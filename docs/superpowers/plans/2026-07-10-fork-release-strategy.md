@@ -543,7 +543,7 @@ Save the ruleset. Only the bypassed repository owner can create, move, or delete
 Run:
 
 ```bash
-gh ruleset list --repo io41/terraform-j2md --no-parents
+gh ruleset list --repo io41/terraform-j2md --parents=false
 gh ruleset check release --repo io41/terraform-j2md
 gh ruleset check master --repo io41/terraform-j2md
 gh api repos/io41/terraform-j2md/rulesets --jq '.[] | {id,name,target,enforcement,conditions}'
