@@ -79,7 +79,7 @@ Run:
 
 ```bash
 go test ./...
-go build ./cmd/terraform-j2md
+go build -o /tmp/terraform-j2md-build ./cmd/terraform-j2md
 goreleaser check
 go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
 git diff --check
@@ -179,6 +179,7 @@ Expected: published, non-draft, non-prerelease, Latest, targeting the merged `re
 Extract the archive and run:
 
 ```bash
+tar -xzf /tmp/terraform-j2md-v0.0.9-io41.2/terraform-j2md_Darwin_arm64.tar.gz -C /tmp/terraform-j2md-v0.0.9-io41.2
 /tmp/terraform-j2md-v0.0.9-io41.2/terraform-j2md --version
 ```
 
@@ -187,7 +188,7 @@ Expected: `0.0.9-io41.2 (<short release commit>)`.
 - [ ] **Step 4: Verify the public Go install path**
 
 ```bash
-GOBIN=/tmp/terraform-j2md-go-install go install github.com/io41/terraform-j2md/cmd/terraform-j2md@v0.0.9-io41.2
+GOBIN=/tmp/terraform-j2md-go-install go install github.com/io41/terraform-j2md/cmd/terraform-j2md@latest
 go version -m /tmp/terraform-j2md-go-install/terraform-j2md
 ```
 
