@@ -1,4 +1,4 @@
-module github.com/reproio/terraform-j2md
+module github.com/io41/terraform-j2md
 
 go 1.22
 
